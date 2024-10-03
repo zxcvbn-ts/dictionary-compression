@@ -1,0 +1,69 @@
+{
+  "name": "@zxcvbn-ts/dictionary-compression",
+  "version": "4.0.0-beta.2",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      },
+      "default": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "lint": "eslint --ext .ts --fix --cache .",
+    "typecheck": "tsc --noEmit"
+  },
+  "description": "dictionary-compression helper for zxcvbn-ts language packages",
+  "license": "MIT",
+  "homepage": "https://github.com/zxcvbn-ts/zxcvbn",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zxcvbn-ts/zxcvbn.git"
+  },
+  "author": "zxcvbn-ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@alttiri/base85": "1.8.0",
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.13",
+    "@types/node": "20.14.8",
+    "@typescript-eslint/eslint-plugin": "8.8.0",
+    "@typescript-eslint/parser": "8.8.0",
+    "eslint": "8.57.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-import-resolver-webpack": "0.13.9",
+    "eslint-plugin-compat": "6.0.1",
+    "eslint-plugin-import": "2.30.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "prettier": "3.3.3",
+    "release-please": "16.14.1",
+    "typescript": "5.6.2",
+    "tsup": "8.3.0"
+  },
+  "keywords": [
+    "zxcvbn-ts",
+    "language",
+    "compression",
+    "decompression"
+  ]
+}
