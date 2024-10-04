@@ -19,16 +19,16 @@
     }
   },
   "scripts": {
-    "build": "node esbuild.config.mjs",
+    "build": "tsup",
     "lint": "eslint --ext .ts --fix --cache .",
     "typecheck": "tsc --noEmit"
   },
   "description": "dictionary-compression helper for zxcvbn-ts language packages",
   "license": "MIT",
-  "homepage": "https://github.com/zxcvbn-ts/zxcvbn",
+  "homepage": "https://github.com/zxcvbn-ts/dictionary-compression",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zxcvbn-ts/zxcvbn.git"
+    "url": "https://github.com/zxcvbn-ts/dictionary-compression.git"
   },
   "author": "zxcvbn-ts",
   "files": [
@@ -36,7 +36,8 @@
     "src"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "dependencies": {
     "@alttiri/base85": "1.8.0",
@@ -56,7 +57,7 @@
     "eslint-plugin-import": "2.30.0",
     "eslint-plugin-prettier": "5.2.1",
     "prettier": "3.3.3",
-    "release-please": "16.14.1",
+    "semantic-release": "24.1.2",
     "typescript": "5.6.2",
     "tsup": "8.3.0"
   },
