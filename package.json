@@ -1,21 +1,29 @@
 {
   "name": "@zxcvbn-ts/dictionary-compression",
   "version": "4.0.0-beta.2",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "type": "commonjs",
   "exports": {
-    ".": {
+    "./compress": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/compress.d.mts",
+        "default": "./dist/compress.mjs"
       },
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/compress.d.ts",
+        "default": "./dist/compress.cjs"
       },
-      "default": "./dist/index.cjs"
+      "default": "./dist/compress.cjs"
+    },
+    "./decompress": {
+      "import": {
+        "types": "./dist/decompress.d.mts",
+        "default": "./dist/decompress.mjs"
+      },
+      "require": {
+        "types": "./dist/decompress.d.ts",
+        "default": "./dist/decompress.cjs"
+      },
+      "default": "./dist/decompress.cjs"
     }
   },
   "scripts": {
