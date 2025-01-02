@@ -1,10 +1,5 @@
-import { decompressSync, strFromU8 } from 'fflate'
-import { decodeBase85 } from '@alttiri/base85'
-
 export default function decompress(encodedString: string) {
-  const decoded = decodeBase85(encodedString)
-  const decompressedBuffer = decompressSync(decoded)
-  const decompressedArray = strFromU8(decompressedBuffer).split(/([A-Z])/g)
+  const decompressedArray = encodedString.split(/([A-Z])/g)
   const decompressedData = []
   let last = ''
   let i

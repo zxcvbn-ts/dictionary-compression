@@ -1,6 +1,3 @@
-import { compressSync, strToU8 } from 'fflate'
-import { encodeBase85 } from '@alttiri/base85'
-
 const isCompactDoubleQuotedString = (string: string) => {
   // eslint-disable-next-line no-control-regex
   return !string.match(/[\x00-\x1f\u2028\u2029\\"]/)
@@ -35,18 +32,9 @@ const compressWithPrefix = (parsed: string[]) => {
     last = entry
   })
 
-  return deltas
+  return deltas.join('')
 }
 
 export default function compress(data: string[]) {
-  const compressedWithPrefix = compressWithPrefix(data)
-  const compressedWithGzip = compressSync(
-    strToU8(compressedWithPrefix.join('')),
-    {
-      level: 9,
-      mem: 12,
-    },
-  )
-
-  return encodeBase85(compressedWithGzip)
+  return compressWithPrefix(data)
 }
