@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@alttiri/base85@1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@alttiri/base85/-/base85-1.8.0.tgz#9a859a9b9bd1847173260e37b58d6fc6c8fd50ce"
-  integrity sha512-HrfdFtOPJ2dlZjHcCDgd9o4ph9+iQnZ+ayWNALImDm1VLv46aMriO13QZ0bpZuvDc8XbPcQK2rb4o38Xt+MMpA==
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.22.13":
   version "7.25.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.25.7.tgz#438f2c524071531d643c6f0188e1e28f130cebc7"
@@ -2279,11 +2274,6 @@ fdir@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/fdir/-/fdir-6.4.0.tgz#8e80ab4b18a2ac24beebf9d20d71e1bc2627dbae"
   integrity sha512-3oB133prH1o4j/L5lLW7uOCF1PlD+/It2L0eL/iAqWMB91RBbqTewABqxhj0ibBd90EEmWZq7ntIWzVaWcXTGQ==
-
-fflate@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.8.2.tgz#fc8631f5347812ad6028bbe4a2308b2792aa1dea"
-  integrity sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==
 
 figures@^2.0.0:
   version "2.0.0"

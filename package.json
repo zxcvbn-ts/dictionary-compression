@@ -48,8 +48,6 @@
     "provenance": true
   },
   "dependencies": {
-    "@alttiri/base85": "1.8.0",
-    "fflate": "^0.8.2"
   },
   "devDependencies": {
     "@types/jest": "29.5.13",
