@@ -15,17 +15,15 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "lib": [
-      "es2019",
-      "dom"
-    ],
-    "types": ["node", "jest"],
+    "lib": ["es2019", "dom"],
+    "types": ["node"],
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
     "baseUrl": ".",
     "skipLibCheck": true,
     "outDir": "dist",
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules", "dist", "test"]
 }

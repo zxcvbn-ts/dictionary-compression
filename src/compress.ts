@@ -1,6 +1,6 @@
 const isCompactDoubleQuotedString = (string: string) => {
   // eslint-disable-next-line no-control-regex
-  return !string.match(/[\x00-\x1f\u2028\u2029\\"]/)
+  return !/[\x00-\x1f\u2028\u2029\\"]/.exec(string)
 }
 
 const compressWithPrefix = (parsed: string[]) => {
