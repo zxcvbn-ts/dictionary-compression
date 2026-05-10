@@ -19,7 +19,8 @@ Without this repository, each zxcvbn-ts language package would need to include i
 
 ## Features
 
-- **Incremental Encoding**: Compresses sorted wordlists by storing common prefixes as a single character (A-Z).
+- **Incremental Encoding**: Compresses wordlists by storing common prefixes as a single character (A-Z).
+- **Order Preservation**: Maintains the original order of the input data using a separate index mapping (permutation).
 - **Lightweight**: Zero runtime dependencies.
 - **TypeScript Support**: Full type definitions included.
 - **Dual Build**: Supports both CommonJS (CJS) and ES Modules (ESM).
@@ -41,14 +42,15 @@ yarn add @zxcvbn-ts/dictionary-compression
 
 ### Compression
 
-The `compress` function takes an array of strings and returns a compressed string. The input array should ideally be sorted to maximize compression.
+The `compress` function takes an array of strings and returns an object containing the compressed string and a permutation array to maintain the original order.
 
 ```typescript
 import compress from '@zxcvbn-ts/dictionary-compression/compress'
 
-const data = ['alpha', 'alphabet', 'beta']
-const compressed = compress(data)
-// Result: "AalphaFbetAbeta"
+const data = ['beta', 'alpha', 'alphabet']
+const { compressedData, permutation } = compress(data)
+// compressedData: "AalphaFbetAbeta"
+// permutation: [2, 0, 1]
 // A = 0 shared chars, F = 5 shared chars, A = 0 shared chars
 ```
 
@@ -59,14 +61,15 @@ const compressed = compress(data)
 
 ### Decompression
 
-The `decompress` function restores the original array from the compressed string.
+The `decompress` function restores the original array from the compressed string and permutation array.
 
 ```typescript
 import decompress from '@zxcvbn-ts/dictionary-compression/decompress'
 
-const compressed = 'AalphaFbetAbeta'
-const decompressed = decompress(compressed)
-// Result: ['alpha', 'alphabet', 'beta']
+const compressedData = 'AalphaFbetAbeta'
+const permutation = [2, 0, 1]
+const decompressed = decompress(compressedData, permutation)
+// Result: ['beta', 'alpha', 'alphabet']
 ```
 
 ## Scripts
