@@ -2,8 +2,8 @@ import { describe, it } from 'node:test'
 import assert from 'node:assert'
 import fs from 'node:fs'
 import path from 'node:path'
-import compress from '../src/compress'
-import decompress from '../src/decompress'
+import compressOrdered from '../src/compress'
+import decompressOrdered from '../src/decompress'
 
 const fixturePath = path.join(
   __dirname,
@@ -15,44 +15,50 @@ const data = JSON.parse(rawData) as string[]
 
 describe('integration', () => {
   it('should compress and decompress correctly', () => {
-    const compressed = compress(data)
-    assert.deepStrictEqual(typeof compressed, 'string')
+    const result = compressOrdered(data)
+    if (Array.isArray(result)) {
+      assert.fail('Expected object with compressedData and permutation')
+    }
 
-    const decompressed = decompress(compressed as string)
+    const decompressed = decompressOrdered(
+      result.compressedData,
+      result.permutation,
+    )
     assert.deepStrictEqual(decompressed, data)
   })
 
   it('should compress in reasonable time', () => {
     const startTime = performance.now()
-    compress(data)
+    compressOrdered(data)
     const compressionTime = performance.now() - startTime
 
-    assert.ok(compressionTime < 50, 'Compression should complete within 50ms')
+    assert.ok(compressionTime < 20, 'Compression should complete within 50ms')
   })
 
   it('should decompress in reasonable time', () => {
-    const compressed = compress(data)
+    const result = compressOrdered(data)
+    if (Array.isArray(result)) {
+      assert.fail('Expected object with compressedData and permutation')
+    }
     const startTime = performance.now()
-    decompress(compressed as string)
+    decompressOrdered(result.compressedData, result.permutation)
     const decompressionTime = performance.now() - startTime
 
     assert.ok(
-      decompressionTime < 500,
+      decompressionTime < 20,
       'Decompression should complete within 500ms',
     )
   })
 
   it('should significantly reduce the size of a big fixture file', () => {
-    const compressed = compress(data)
-
-    assert.strictEqual(
-      typeof compressed,
-      'string',
-      'Compressed result should be a string',
-    )
+    const result = compressOrdered(data)
+    if (Array.isArray(result)) {
+      assert.fail('Expected object with compressedData and permutation')
+    }
 
     const originalSize = rawData.length
-    const compressedSize = compressed.length
+    const compressedSize =
+      result.compressedData.length + result.permutation.length
     const reduction = ((originalSize - compressedSize) / originalSize) * 100
 
     assert.ok(
@@ -61,8 +67,8 @@ describe('integration', () => {
     )
 
     assert.ok(
-      reduction > 18,
-      'Compressed size percentage should be at least 18% smaller than original',
+      reduction > 50,
+      'Compressed size percentage should be at least 50% smaller than original',
     )
   })
 })

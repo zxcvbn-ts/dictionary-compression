@@ -4,12 +4,12 @@ import decompress from '../src/decompress'
 
 describe('decompress', () => {
   it('should decompress a string with prefix compression', () => {
-    const input = 'AtestEingEer'
+    const input = 'AtestEerEing'
     const expected = ['test', 'testing', 'tester']
-    assert.deepStrictEqual(decompress(input), expected)
+    assert.deepStrictEqual(decompress(input, [0, 2, 1]), expected)
   })
 
   it('should handle empty string', () => {
-    assert.deepStrictEqual(decompress(''), [])
+    assert.deepStrictEqual(decompress('', []), [])
   })
 })
