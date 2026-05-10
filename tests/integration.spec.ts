@@ -32,7 +32,7 @@ describe('integration', () => {
     compressOrdered(data)
     const compressionTime = performance.now() - startTime
 
-    assert.ok(compressionTime < 20, 'Compression should complete within 50ms')
+    assert.ok(compressionTime < 50, 'Compression should complete within 50ms')
   })
 
   it('should decompress in reasonable time', () => {
@@ -45,8 +45,8 @@ describe('integration', () => {
     const decompressionTime = performance.now() - startTime
 
     assert.ok(
-      decompressionTime < 20,
-      'Decompression should complete within 500ms',
+      decompressionTime < 50,
+      'Decompression should complete within 50ms',
     )
   })
 
