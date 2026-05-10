@@ -5,12 +5,18 @@ import compress from '../src/compress'
 describe('compress', () => {
   it('should compress an array of strings with prefix compression', () => {
     const input = ['test', 'testing', 'tester']
-    const expected = 'AtestEingEer'
-    assert.strictEqual(compress(input), expected)
+    const expected = 'AtestEerEing'
+    assert.deepStrictEqual(compress(input), {
+      compressedData: expected,
+      permutation: [0, 2, 1],
+    })
   })
 
   it('should handle empty array', () => {
-    assert.strictEqual(compress([]), '')
+    assert.deepStrictEqual(compress([]), {
+      compressedData: '',
+      permutation: [],
+    })
   })
 
   it('should return non-array input as is', () => {

@@ -35,6 +35,28 @@ const compressWithPrefix = (parsed: string[]) => {
   return deltas.join('')
 }
 
-export default function compress(data: string[]) {
-  return compressWithPrefix(data)
+export default function compressOrdered(data: string[]) {
+  if (!Array.isArray(data)) {
+    return data
+  }
+  const indexed = data.map((value, index) => ({ value, index }))
+  indexed.sort((a, b) => {
+    if (a.value < b.value) return -1
+    if (a.value > b.value) return 1
+    return 0
+  })
+
+  const sortedData = indexed.map((item) => item.value)
+  const permutation = indexed.map((item) => item.index)
+
+  const compressedData = compressWithPrefix(sortedData)
+
+  if (typeof compressedData !== 'string') {
+    return data
+  }
+
+  return {
+    compressedData,
+    permutation,
+  }
 }
